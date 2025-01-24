@@ -5,17 +5,18 @@ class PostDetailViewController: UIViewController {
     private var comments: [Comment]
     private var expandedCommentIndex: Int?
 
-    private let tableView: UITableView = {
+    lazy private var tableView: UITableView = {
         let tableView = UITableView()
         tableView.register(PostDetailHeaderCell.self, forCellReuseIdentifier: PostDetailHeaderCell.identifier)
         tableView.register(CommentTableViewCell.self, forCellReuseIdentifier: CommentTableViewCell.identifier)
         return tableView
     }()
 
-    init(post: Post, comments: [Comment]) {
+    init(post: Post,
+         comments: [Comment]) {
         self.post = post
         self.comments = comments
-        super.init(nibName: nil, bundle: nil)
+        super.init(nibName: nil, bundle: nil) //TODO: Know before you use it.
     }
 
     required init?(coder: NSCoder) {
@@ -24,7 +25,7 @@ class PostDetailViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        title = "Post Details"
+        title = "Post Details" //TODO: As discussed use base view controller and setup nav bar over there.
         view.backgroundColor = .white
 
         setupTableView()
@@ -46,9 +47,9 @@ class PostDetailViewController: UIViewController {
 
     private func fetchComments() {
         // Simulate API fetch with a delay (no activity indicator)
-        DispatchQueue.global().asyncAfter(deadline: .now() + 2) { [weak self] in
+        DispatchQueue.global().asyncAfter(deadline: .now() + 2) { [weak self] in //TODO: Why is this required? if not remove.
             // Simulated comments
-            let fetchedComments = self?.comments ?? []
+            let fetchedComments = self?.comments ?? [] //TODO: A -> B, B -> A why?
             DispatchQueue.main.async {
                 self?.comments = fetchedComments
                 self?.tableView.reloadData()
@@ -75,16 +76,16 @@ extension PostDetailViewController: UITableViewDataSource, UITableViewDelegate {
             cell.selectionStyle = .none
             cell.configure(with: post)
             return cell
-        } else {
-            // Comments Section
-            guard let cell = tableView.dequeueReusableCell(withIdentifier: CommentTableViewCell.identifier, for: indexPath) as? CommentTableViewCell else {
-                return UITableViewCell()
-            }
-            let comment = comments[indexPath.row]
-            let isExpanded = (indexPath.row == expandedCommentIndex)
-            cell.configure(with: comment, isExpanded: isExpanded)
-            return cell
         }
+        // Comments Section
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: CommentTableViewCell.identifier, for: indexPath) as? CommentTableViewCell else {
+            return UITableViewCell()
+        }
+        let comment = comments[indexPath.row]
+        let isExpanded = (indexPath.row == expandedCommentIndex)
+        cell.configure(with: comment, isExpanded: isExpanded)
+        return cell
+        
     }
 
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
@@ -98,15 +99,18 @@ extension PostDetailViewController: UITableViewDataSource, UITableViewDelegate {
             } else {
                 expandedCommentIndex = indexPath.row
             }
-            tableView.reloadSections(IndexSet(integer: 1), with: .automatic)
+            tableView.reloadSections(IndexSet(integer: 1), with: .automatic) //TODO: Know before you use it.
         }
     }
 
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        if indexPath.section == 0 {
-            return UITableView.automaticDimension
-        } else {
-            return UITableView.automaticDimension
-        }
+        UITableView.automaticDimension
+    }
+    func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+        0.01
+    }
+    
+    func tableView(_ tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
+        0.01
     }
 }

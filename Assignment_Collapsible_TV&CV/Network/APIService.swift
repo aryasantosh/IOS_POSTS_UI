@@ -8,15 +8,15 @@
 // APIService.swift
 import Foundation
 
-class APIService {
+class APIService { //<--- TODO: Remove duplicate codes here, if possible follow router architecture.
     func fetchPosts(completion: @escaping (Result<[Post], Error>) -> Void) {
-        guard let url = URL(string: "https://jsonplaceholder.typicode.com/posts") else { return }
+        guard let url = URL(string: "https://jsonplaceholder.typicode.com/posts") else { return } //TODO: Keep the end points in a constant file.
         URLSession.shared.dataTask(with: url) { data, _, error in
             if let error = error {
                 completion(.failure(error))
                 return
             }
-            guard let data = data else { return }
+            guard let data = data else { return } //TODO: Don't just return, create an enum of errors , define them like No internet, unable to serialise,
             do {
                 let posts = try JSONDecoder().decode([Post].self, from: data)
                 completion(.success(posts))

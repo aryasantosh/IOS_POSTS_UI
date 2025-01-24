@@ -2,9 +2,9 @@ import UIKit
 
 class PostDetailHeaderCell: UITableViewCell {
     static let identifier = "PostDetailHeaderCell"
-
+    
     private let titleLabel = UILabel()
-    private let descriptionLabel = UILabel() // For description
+    private let descriptionLabel = UILabel()
 
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
@@ -17,22 +17,22 @@ class PostDetailHeaderCell: UITableViewCell {
 
     private func setupUI() {
         // Setup title label
-        titleLabel.font = UIFont.boldSystemFont(ofSize: 22) // Slightly larger font
-        titleLabel.numberOfLines = 0 // Allow multiple lines
-        titleLabel.textColor = .black // Ensure proper contrast
+        titleLabel.font = UIFont.boldSystemFont(ofSize: 22)
+        titleLabel.numberOfLines = 0
+        titleLabel.textColor = UIColor.label // Adapts to light/dark mode
         titleLabel.translatesAutoresizingMaskIntoConstraints = false
         contentView.addSubview(titleLabel)
 
         // Setup description label
         descriptionLabel.font = UIFont.systemFont(ofSize: 16)
-        descriptionLabel.numberOfLines = 0 // Allow multiple lines
-        descriptionLabel.lineBreakMode = .byTruncatingTail // Truncate if the description is too long
-        descriptionLabel.textColor = .darkGray // Slightly lighter color for readability
+        descriptionLabel.numberOfLines = 0
+        descriptionLabel.lineBreakMode = .byTruncatingTail
+        descriptionLabel.textColor = UIColor.secondaryLabel // Adapts to light/dark mode
         descriptionLabel.translatesAutoresizingMaskIntoConstraints = false
         contentView.addSubview(descriptionLabel)
 
         // Content view setup for card-like effect
-        contentView.backgroundColor = .white
+        contentView.backgroundColor = UIColor.systemBackground // Adapts to light/dark mode
         contentView.layer.cornerRadius = 12
         contentView.layer.masksToBounds = true
         contentView.layer.shadowColor = UIColor.black.cgColor
@@ -55,6 +55,6 @@ class PostDetailHeaderCell: UITableViewCell {
 
     func configure(with post: Post) {
         titleLabel.text = post.title
-        descriptionLabel.text = post.body // Display the description of the post
+        descriptionLabel.text = post.body
     }
 }

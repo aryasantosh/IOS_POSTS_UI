@@ -10,7 +10,7 @@ import Foundation
 
 class PostsViewModel {
     private let apiService = APIService()
-    private(set) var posts: [Post] = []
+    var posts: [Post] = []
     var comments: [Comment] = []
     
     var topPosts: [Post] {
@@ -32,7 +32,7 @@ class PostsViewModel {
                 self?.posts = posts
                 self?.onPostsUpdated?()
             case .failure(let error):
-                self?.onError?(error.localizedDescription)
+                self?.onError?(error.localizedDescription) //TODO: Develop a common way to communicate the error.
             }
         }
     }
@@ -44,7 +44,7 @@ class PostsViewModel {
                 self?.comments = comments
                 self?.onCommentsUpdated?()
             case .failure(let error):
-                self?.onError?(error.localizedDescription)
+                self?.onError?(error.localizedDescription) //TODO: Develop a common way to communicate the error. example Toasts, Snackbars etc..
             }
         }
     }
