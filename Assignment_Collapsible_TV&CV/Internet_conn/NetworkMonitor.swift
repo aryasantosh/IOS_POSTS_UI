@@ -20,6 +20,8 @@ class NetworkMonitor {
                 NotificationCenter.default.post(name: .networkStatusChanged, object: nil)
             }
         }
+        
+        
         monitor.start(queue: queue)
     }
 }
