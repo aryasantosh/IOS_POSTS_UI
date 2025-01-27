@@ -57,7 +57,17 @@ class CommentTableViewCell: UITableViewCell {
         self.selectionStyle = .none
         contentView.addSubview(cardView)
 
-        //TODO: Write below code in seperate function.
+        // Call the function to add subviews and set constraints
+        setupSubviewsAndConstraints()
+
+        seeMoreButton.isHidden = true // Initially hide the button
+    }
+
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+
+    private func setupSubviewsAndConstraints() {
         // Add subviews to the card view
         cardView.addSubview(emailLabel)
         cardView.addSubview(bodyLabel)
@@ -90,15 +100,10 @@ class CommentTableViewCell: UITableViewCell {
             bodyLabel.topAnchor.constraint(equalTo: emailLabel.bottomAnchor, constant: 8),
             
             seeMoreButton.topAnchor.constraint(equalTo: bodyLabel.bottomAnchor, constant: 8),
-            seeMoreButton.centerXAnchor.constraint(equalTo: cardView.centerXAnchor),
+//            seeMoreButton.centerXAnchor.constraint(equalTo: cardView.centerXAnchor),
+            seeMoreButton.trailingAnchor.constraint(equalTo: cardView.trailingAnchor, constant: -6),
             seeMoreButton.bottomAnchor.constraint(equalTo: cardView.bottomAnchor, constant: -12)
         ])
-
-        seeMoreButton.isHidden = true // Initially hide the button
-    }
-
-    required init?(coder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
     }
 
     func configure(with comment: Comment, isExpanded: Bool) {
@@ -144,12 +149,13 @@ extension UILabel {
 }
 
 
+
 //import UIKit
 //
 //class CommentTableViewCell: UITableViewCell {
 //    static let identifier = "CommentTableViewCell"
 //
-//    private let cardView: UIView = {
+//    lazy private var cardView: UIView = {
 //        let view = UIView()
 //        view.layer.cornerRadius = 10
 //        view.layer.masksToBounds = true
@@ -160,7 +166,7 @@ extension UILabel {
 //        return view
 //    }()
 //    
-//    private let emailLabel: UILabel = {
+//    lazy private var emailLabel: UILabel = {
 //        let label = UILabel()
 //        label.font = UIFont.boldSystemFont(ofSize: 14)
 //        label.numberOfLines = 1
@@ -168,7 +174,7 @@ extension UILabel {
 //        return label
 //    }()
 //
-//    private let bodyLabel: UILabel = {
+//    lazy private var bodyLabel: UILabel = {
 //        let label = UILabel()
 //        label.font = UIFont.systemFont(ofSize: 16)
 //        label.numberOfLines = 2  // Initially set to 2 for truncation
@@ -176,10 +182,11 @@ extension UILabel {
 //        label.textColor = .label
 //        label.alpha = 1
 //        label.lineBreakMode = .byTruncatingTail
+//        label.translatesAutoresizingMaskIntoConstraints = false
 //        return label
 //    }()
 //
-//    private let rightIconImageView: UIImageView = {
+//    lazy private var rightIconImageView: UIImageView = {
 //        let imageView = UIImageView()
 //        imageView.image = UIImage(systemName: "chevron.down.circle")
 //        imageView.tintColor = .systemBlue
@@ -187,7 +194,7 @@ extension UILabel {
 //        return imageView
 //    }()
 //
-//    private let seeMoreButton: UIButton = {
+//    lazy private var seeMoreButton: UIButton = {
 //        let button = UIButton(type: .system)
 //        button.setTitle("See More", for: .normal)
 //        button.addTarget(self, action: #selector(expandBody), for: .touchUpInside)
@@ -195,7 +202,6 @@ extension UILabel {
 //    }()
 //    
 //    private var isExpanded = false
-//    private var bodyLabelHeightConstraint: NSLayoutConstraint!
 //
 //    override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
 //        super.init(style: style, reuseIdentifier: reuseIdentifier)
@@ -203,6 +209,7 @@ extension UILabel {
 //        self.selectionStyle = .none
 //        contentView.addSubview(cardView)
 //
+//        //TODO: Write below code in seperate function.
 //        // Add subviews to the card view
 //        cardView.addSubview(emailLabel)
 //        cardView.addSubview(bodyLabel)
@@ -211,7 +218,6 @@ extension UILabel {
 //
 //        cardView.translatesAutoresizingMaskIntoConstraints = false
 //        emailLabel.translatesAutoresizingMaskIntoConstraints = false
-//        bodyLabel.translatesAutoresizingMaskIntoConstraints = false
 //        seeMoreButton.translatesAutoresizingMaskIntoConstraints = false
 //        rightIconImageView.translatesAutoresizingMaskIntoConstraints = false
 //
@@ -240,9 +246,7 @@ extension UILabel {
 //            seeMoreButton.bottomAnchor.constraint(equalTo: cardView.bottomAnchor, constant: -12)
 //        ])
 //
-//        // Set bodyLabel height constraint for smooth expansion and collapse
-//        bodyLabelHeightConstraint = bodyLabel.heightAnchor.constraint(equalToConstant: 44) // Default height
-//        bodyLabelHeightConstraint.isActive = true
+//        seeMoreButton.isHidden = true // Initially hide the button
 //    }
 //
 //    required init?(coder: NSCoder) {
@@ -270,14 +274,12 @@ extension UILabel {
 //        bodyLabel.numberOfLines = isExpanded ? 0 : 2
 //        seeMoreButton.setTitle(isExpanded ? "See Less" : "See More", for: .normal)
 //
-//        // Animate the height change of body label for smooth expansion and collapse
+//        // Immediately update the cell layout
 //        UIView.animate(withDuration: 0.3, animations: {
-//            // If expanded, set a larger height (e.g., 200), otherwise reset to original height
-//            self.bodyLabelHeightConstraint.constant = self.isExpanded ? 200 : 44
-//            self.layoutIfNeeded() // Trigger layout update for just this cell
+//            self.layoutIfNeeded()
 //        })
 //
-//        // Ensure the table view cells are properly re-laid out when expanded/collapsed
+//        // Force the table view to recalculate row heights
 //        if let tableView = self.superview as? UITableView {
 //            tableView.beginUpdates()
 //            tableView.endUpdates()
@@ -292,3 +294,5 @@ extension UILabel {
 //        return label.frame.size.height > maxHeight
 //    }
 //}
+//
+//

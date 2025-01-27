@@ -7,32 +7,16 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            uuid = "5F65E5FC-E704-442C-AC45-C337E99B5673"
-            shouldBeEnabled = "No"
+            uuid = "E844ECD8-0A47-4F61-A193-8E4B40DF43F2"
+            shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "View/PostTableViewCell.swift"
+            filePath = "View Controller/BaseViewController.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "133"
-            endingLineNumber = "133"
-            landmarkName = "heartTapped()"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            uuid = "BC2ADA5E-34C2-40B3-9C8C-043EA17DA324"
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "View/PostTableViewCell.swift"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "143"
-            endingLineNumber = "143"
-            landmarkName = "heartTapped()"
+            startingLineNumber = "17"
+            endingLineNumber = "17"
+            landmarkName = "setupNavigationBar(withTitle:withDropdown:dropdownAction:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
