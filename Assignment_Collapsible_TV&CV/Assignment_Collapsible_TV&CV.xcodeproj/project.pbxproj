@@ -24,9 +24,9 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		B27DEFAA2D411B0E0008DDB2 /* Assignment_Collapsible_TV&CV.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; name = "Assignment_Collapsible_TV&CV.app"; path = "/Users/arya.kulkarni/Documents/IOS_POSTS_UI/Assignment_Collapsible_TV&CV/build/Debug-iphoneos/Assignment_Collapsible_TV&CV.app"; sourceTree = "<absolute>"; };
-		B27DEFAB2D411B0E0008DDB2 /* Assignment_Collapsible_TV&CVTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; name = "Assignment_Collapsible_TV&CVTests.xctest"; path = "/Users/arya.kulkarni/Documents/IOS_POSTS_UI/Assignment_Collapsible_TV&CV/build/Debug-iphoneos/Assignment_Collapsible_TV&CV.app/PlugIns/Assignment_Collapsible_TV&CVTests.xctest"; sourceTree = "<absolute>"; };
-		B27DEFAC2D411B0E0008DDB2 /* Assignment_Collapsible_TV&CVUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; name = "Assignment_Collapsible_TV&CVUITests.xctest"; path = "/Users/arya.kulkarni/Documents/IOS_POSTS_UI/Assignment_Collapsible_TV&CV/build/Debug-iphoneos/Assignment_Collapsible_TV&CVUITests-Runner.app/PlugIns/Assignment_Collapsible_TV&CVUITests.xctest"; sourceTree = "<absolute>"; };
+		B277D0692D4A344F006584BC /* Assignment_Collapsible_TV&CVTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; name = "Assignment_Collapsible_TV&CVTests.xctest"; path = "/Users/arya.kulkarni/Documents/IOS_POSTS_UI/Assignment_Collapsible_TV&CV/build/Debug-iphoneos/Assignment_Collapsible_TV&CV.app/PlugIns/Assignment_Collapsible_TV&CVTests.xctest"; sourceTree = "<absolute>"; };
+		B277D06A2D4A344F006584BC /* Assignment_Collapsible_TV&CVUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; name = "Assignment_Collapsible_TV&CVUITests.xctest"; path = "/Users/arya.kulkarni/Documents/IOS_POSTS_UI/Assignment_Collapsible_TV&CV/build/Debug-iphoneos/Assignment_Collapsible_TV&CVUITests-Runner.app/PlugIns/Assignment_Collapsible_TV&CVUITests.xctest"; sourceTree = "<absolute>"; };
+		B27DF0C72D4A338A0008DDB2 /* Assignment_Collapsible_TV&CV.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; name = "Assignment_Collapsible_TV&CV.app"; path = "/Users/arya.kulkarni/Documents/IOS_POSTS_UI/Assignment_Collapsible_TV&CV/build/Debug-iphoneos/Assignment_Collapsible_TV&CV.app"; sourceTree = "<absolute>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFileSystemSynchronizedBuildFileExceptionSet section */
@@ -172,7 +172,7 @@
 			packageProductDependencies = (
 			);
 			productName = "Assignment_Collapsible_TV&CV";
-			productReference = B27DEFAA2D411B0E0008DDB2 /* Assignment_Collapsible_TV&CV.app */;
+			productReference = B27DF0C72D4A338A0008DDB2 /* Assignment_Collapsible_TV&CV.app */;
 			productType = "com.apple.product-type.application";
 		};
 		B2E61EA72D3F62CD00E6F442 /* Assignment_Collapsible_TV&CVTests */ = {
@@ -195,7 +195,7 @@
 			packageProductDependencies = (
 			);
 			productName = "Assignment_Collapsible_TV&CVTests";
-			productReference = B27DEFAB2D411B0E0008DDB2 /* Assignment_Collapsible_TV&CVTests.xctest */;
+			productReference = B277D0692D4A344F006584BC /* Assignment_Collapsible_TV&CVTests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
 		B2E61EB12D3F62CD00E6F442 /* Assignment_Collapsible_TV&CVUITests */ = {
@@ -218,7 +218,7 @@
 			packageProductDependencies = (
 			);
 			productName = "Assignment_Collapsible_TV&CVUITests";
-			productReference = B27DEFAC2D411B0E0008DDB2 /* Assignment_Collapsible_TV&CVUITests.xctest */;
+			productReference = B277D06A2D4A344F006584BC /* Assignment_Collapsible_TV&CVUITests.xctest */;
 			productType = "com.apple.product-type.bundle.ui-testing";
 		};
 /* End PBXNativeTarget section */
@@ -342,6 +342,7 @@
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 16.6;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -370,6 +371,7 @@
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 16.6;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",

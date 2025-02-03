@@ -1,7 +1,7 @@
 //
 //  APIService.swift
 //  Assignment_Collapsible_TV&CV
-//
+//In my APIService class, I use Swift’s JSONDecoder to serialize JSON data into Swift objects. Specifically, after fetching the data using URLSession.shared.dataTask, I attempt to decode it using JSONDecoder().decode(T.self, from: data), where T is a generic type conforming to Decodable. This allows the function to decode different types of objects, such as Post or Comment, depending on the API response. If decoding fails, I handle the error using the APIError.serializationError case, ensuring that any issues in data conversion are properly caught and managed.
 //  Created by Arya Kulkarni on 21/01/25.
 //
 
@@ -15,7 +15,7 @@ class APIService {
             return
         }
         
-        URLSession.shared.dataTask(with: url) { data, _, error in
+        URLSession.shared.dataTask(with: url) { data, _, error in  //makes network request
             if let error = error {
                 completion(.failure(.networkError(error)))
                 return
@@ -25,7 +25,7 @@ class APIService {
                 completion(.failure(.noData))
                 return
             }
-            
+            //tries to decode it into expected type T (generic type) swift objects.
             do {
                 let decodedData = try JSONDecoder().decode(T.self, from: data)
                 completion(.success(decodedData))
@@ -36,7 +36,7 @@ class APIService {
     }
     
     func fetchPosts(completion: @escaping (Result<[Post], APIError>) -> Void) {
-        fetchData(url: APIEndpoints.postsURL, completion: completion)
+        fetchData(url: APIEndpoints.postsURL, completion: completion) //fetch data with url
     }
     
     func fetchComments(for postId: Int, completion: @escaping (Result<[Comment], APIError>) -> Void) {
@@ -44,52 +44,14 @@ class APIService {
         fetchData(url: url, completion: completion)
     }
 }
-
+//convert that JSON into a struct or class
 // Enum for API Errors
 enum APIError: Error {
     case invalidURL
     case networkError(Error)
     case noData
-    case serializationError(Error)
-}
+    case serializationError(Error) //converts data from one format (like JSON) into a usable Swift object
+} //If you have a Post object that expects a title of type String but the server returns it as an Int
 
 
 
-// APIService.swift
-//import Foundation
-//
-//class APIService { //<--- TODO: Remove duplicate codes here, if possible follow router architecture.
-//    func fetchPosts(completion: @escaping (Result<[Post], Error>) -> Void) {
-//        guard let url = URL(string: "https://jsonplaceholder.typicode.com/posts") else { return } //TODO: Keep the end points in a constant file.
-//        URLSession.shared.dataTask(with: url) { data, _, error in
-//            if let error = error {
-//                completion(.failure(error))
-//                return
-//            }
-//            guard let data = data else { return } //TODO: Don't just return, create an enum of errors , define them like No internet, unable to serialise,
-//            do {
-//                let posts = try JSONDecoder().decode([Post].self, from: data)
-//                completion(.success(posts))
-//            } catch {
-//                completion(.failure(error))
-//            }
-//        }.resume()
-//    }
-//
-//    func fetchComments(for postId: Int, completion: @escaping (Result<[Comment], Error>) -> Void) {
-//        guard let url = URL(string: "https://jsonplaceholder.typicode.com/posts/\(postId)/comments") else { return }
-//        URLSession.shared.dataTask(with: url) { data, _, error in
-//            if let error = error {
-//                completion(.failure(error))
-//                return
-//            }
-//            guard let data = data else { return }
-//            do {
-//                let comments = try JSONDecoder().decode([Comment].self, from: data)
-//                completion(.success(comments))
-//            } catch {
-//                completion(.failure(error))
-//            }
-//        }.resume()
-//    }
-//}

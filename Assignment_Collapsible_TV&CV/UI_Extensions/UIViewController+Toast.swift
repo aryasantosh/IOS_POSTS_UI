@@ -18,18 +18,18 @@ extension UIViewController {
         toastLabel.alpha = 1.0
         toastLabel.layer.cornerRadius = 10
         toastLabel.clipsToBounds = true
-
+        
         toastLabel.translatesAutoresizingMaskIntoConstraints = false
         view.addSubview(toastLabel)
-
+        
         NSLayoutConstraint.activate([
             toastLabel.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor, constant: -20),
             toastLabel.centerXAnchor.constraint(equalTo: view.centerXAnchor),
             toastLabel.widthAnchor.constraint(lessThanOrEqualToConstant: 300),
             toastLabel.heightAnchor.constraint(equalToConstant: 35)
         ])
-
-        UIView.animate(withDuration: 2.0, delay: duration, options: .curveEaseOut, animations: {
+        
+        UIView.animate(withDuration: 1.0, delay: duration, options: .curveEaseOut, animations: {
             toastLabel.alpha = 0.0
         }) { _ in
             toastLabel.removeFromSuperview()
